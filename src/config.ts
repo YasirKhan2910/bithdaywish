@@ -5,7 +5,7 @@
 
 export const config = {
   // Her name — pre-filled but she can also type it on the landing screen
-  herName: "Indra",
+  herName: "Induu",
 
   // Your name — used to sign the love letter
   myName: "Your Jaan",
@@ -65,7 +65,7 @@ export const config = {
 
   // ── Love letter paragraphs (Stage 6) ─────────────────────
   loveLetter: {
-    greeting: "My dearest Indra, my Jaanam ❤️,",
+    greeting: "My dearest Induu, my Jaanam ❤️,",
     paragraphs: [
       "There are days when I sit here, thousands of miles away, and I think about you so much that the distance feels almost physical — like a weight on my chest that doesn't lift.",
       "I think about the sound of your voice. The way you laugh. The little things you say that I replay in my head when everything else goes quiet. And on days like today — your birthday — I feel it more than ever.",

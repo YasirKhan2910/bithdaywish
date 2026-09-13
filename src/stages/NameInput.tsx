@@ -11,7 +11,7 @@ const CUTE_ERRORS = [
   "Hmm... think harder! What's that sweet nickname? 🙈",
   "Aww not quite! Hint: It starts with 'J' and has my whole heart ❤️",
   "Try again my love! What do you always call me? 🥺",
-  "Close, but you know the real magic word... 😉",
+  "Close, but you know the real magic word is 'Jaan'... 😉",
   "Give it another shot, sweetheart! 🥰",
 ];
 
@@ -23,16 +23,9 @@ export default function NameInput({ onSubmit }: NameInputProps) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [floatingEmojis, setFloatingEmojis] = useState<{ id: number; emoji: string; x: number }[]>([]);
 
+  // Strictly check for 'jaan' only (case-insensitive & trimmed)
   const checkAnswer = (val: string) => {
-    const clean = val.trim().toLowerCase();
-    return (
-      clean === "jaan" ||
-      clean === "my jaan" ||
-      clean === "meri jaan" ||
-      clean === "jaanu" ||
-      clean === "jan" ||
-      clean.includes("jaan")
-    );
+    return val.trim().toLowerCase() === "jaan";
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,6 +35,8 @@ export default function NameInput({ onSubmit }: NameInputProps) {
 
     if (checkAnswer(val)) {
       triggerSuccess();
+    } else {
+      setIsSuccess(false);
     }
   };
 
@@ -52,12 +47,12 @@ export default function NameInput({ onSubmit }: NameInputProps) {
 
     // Gentle sparkles celebration
     confetti({
-      particleCount: 40,
-      spread: 60,
+      particleCount: 50,
+      spread: 70,
       origin: { y: 0.6, x: 0.5 },
       colors: ["#f2b8c6", "#d4607a", "#f0c070", "#ffffff"],
       gravity: 1,
-      scalar: 0.9,
+      scalar: 0.95,
     });
   };
 
@@ -79,6 +74,7 @@ export default function NameInput({ onSubmit }: NameInputProps) {
       triggerSuccess();
       onSubmit(config.herName);
     } else {
+      setIsSuccess(false);
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 500);
 
@@ -171,7 +167,7 @@ export default function NameInput({ onSubmit }: NameInputProps) {
               placeholder="Type that special name... ✨"
               className={`romantic-input w-full px-5 sm:px-6 py-4 rounded-2xl text-center font-serif text-base sm:text-lg tracking-wide transition-all duration-300 ${
                 isSuccess
-                  ? "border-rose-400/80 shadow-[0_0_25px_rgba(212,96,122,0.4)]"
+                  ? "border-rose-400/90 shadow-[0_0_25px_rgba(212,96,122,0.45)] ring-1 ring-rose-400"
                   : isShaking
                   ? "border-rose-500/80 shadow-[0_0_20px_rgba(239,68,68,0.3)]"
                   : ""
@@ -187,6 +183,7 @@ export default function NameInput({ onSubmit }: NameInputProps) {
                 <motion.div
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0, opacity: 0 }}
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-rose-300 text-lg"
                 >
                   🥰
@@ -212,8 +209,10 @@ export default function NameInput({ onSubmit }: NameInputProps) {
 
             {isSuccess && (
               <motion.div
+                key="success"
                 initial={{ opacity: 0, y: -6, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.3 }}
                 className="text-xs sm:text-sm font-sans text-rose-200 bg-rose-900/30 border border-rose-400/40 rounded-xl px-4 py-2.5 shadow-lg"
               >
@@ -242,7 +241,7 @@ export default function NameInput({ onSubmit }: NameInputProps) {
               }`}
             >
               <span className="relative z-10">
-                {isSuccess ? "Open your surprise ✨" : "Check Answer & Open ✨"}
+                {isSuccess ? "Open your surprise ✨" : "Unlock surprise ✨"}
               </span>
             </motion.button>
           </motion.div>
