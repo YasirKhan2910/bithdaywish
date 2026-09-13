@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { config } from "../config";
 
 interface DistanceAnimationProps {
   onContinue: () => void;
@@ -85,12 +86,12 @@ export default function DistanceAnimation({ onContinue }: DistanceAnimationProps
           className="flex justify-between items-center px-2 mb-2 sm:hidden"
         >
           <div className="text-center">
-            <span className="text-2xl">🇮🇳</span>
-            <p className="text-xs text-warm-white/40 font-sans mt-0.5">India</p>
+            <span className="text-2xl">{config.myFlag}</span>
+            <p className="text-xs text-warm-white/40 font-sans mt-0.5">{config.myCountry}</p>
           </div>
           <div className="text-center">
-            <span className="text-2xl">🇨🇦</span>
-            <p className="text-xs text-warm-white/40 font-sans mt-0.5">Canada</p>
+            <span className="text-2xl">{config.herFlag}</span>
+            <p className="text-xs text-warm-white/40 font-sans mt-0.5">{config.herCountry}</p>
           </div>
         </motion.div>
 
@@ -157,12 +158,12 @@ export default function DistanceAnimation({ onContinue }: DistanceAnimationProps
             <motion.path d={pathD} fill="none" stroke="rgba(212,96,122,0.3)" strokeWidth="6" strokeLinecap="round" filter="url(#glow)" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 2.8, delay: 0.5, ease: "easeInOut" }} />
             <circle cx="60" cy="100" r="6" fill="#d4607a" />
             <circle cx="60" cy="100" r="10" fill="none" stroke="rgba(212,96,122,0.3)" strokeWidth="2" />
-            <text x="60" y="130" textAnchor="middle" fontSize="20" className="select-none">🇮🇳</text>
-            <text x="60" y="155" textAnchor="middle" fontSize="10" fill="rgba(245,232,232,0.5)" fontFamily="Inter, sans-serif">India</text>
+            <text x="60" y="130" textAnchor="middle" fontSize="20" className="select-none">{config.myFlag}</text>
+            <text x="60" y="155" textAnchor="middle" fontSize="10" fill="rgba(245,232,232,0.5)" fontFamily="Inter, sans-serif">{config.myCountry}</text>
             <circle cx="540" cy="100" r="6" fill="#f0c070" />
             <circle cx="540" cy="100" r="10" fill="none" stroke="rgba(240,192,112,0.3)" strokeWidth="2" />
-            <text x="540" y="130" textAnchor="middle" fontSize="20" className="select-none">🇨🇦</text>
-            <text x="540" y="155" textAnchor="middle" fontSize="10" fill="rgba(245,232,232,0.5)" fontFamily="Inter, sans-serif">Canada</text>
+            <text x="540" y="130" textAnchor="middle" fontSize="20" className="select-none">{config.herFlag}</text>
+            <text x="540" y="155" textAnchor="middle" fontSize="10" fill="rgba(245,232,232,0.5)" fontFamily="Inter, sans-serif">{config.herCountry}</text>
             {planeProgress > 0 && planeProgress < 0.98 && (
               <g transform={`translate(${planePos.x}, ${planePos.y}) rotate(${planeAngle})`}>
                 <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fontSize="18" className="select-none" style={{ filter: "drop-shadow(0 0 6px rgba(240,192,112,0.8))" }}>✈️</text>

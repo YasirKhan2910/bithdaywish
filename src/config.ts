@@ -12,9 +12,9 @@ export const config = {
 
   // Countries
   myCountry: "India",
-  herCountry: "Canada",
+  herCountry: "Miami",
   myFlag: "🇮🇳",
-  herFlag: "🇨🇦",
+  herFlag: "🇺🇸",
 
   // Optional: birthday date string shown in the reveal
   birthdayDate: "September 14",
@@ -52,7 +52,7 @@ export const config = {
     "Love isn't measured in kilometers.",
     "It is measured by how much someone stays in your heart...",
     "Even when they're far away.",
-    "Canada may have you right now...",
+    "Miami may have you right now...",
     "But a very big piece of my heart is with you, my Jaanam. ❤️",
   ],
 
